@@ -5,22 +5,28 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       # Step 1: Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-
       # Step 2: hello world
       - name: Print hello world
         run: echo "hello world"
 
-      # Step 4: sample test
+      # Step 3: sample test
       - name: Run tests
         run: echo sampletest
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: Approvers
+    steps:
+      - name: Test
+        run: echo "Approvers done"
