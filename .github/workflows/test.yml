@@ -1,11 +1,11 @@
 name: CI Pipeline
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
+    inputs:
+      EntryMessage:
+        description: asdf
+        required: true
 
 jobs:
   build:
